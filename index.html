@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trade Union Vision</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --owa-orange: #CD4C1D; /* Orange emblématique d'OWA */
+            --owa-black: #1a1a1a;
+            --owa-bg-light: #f9f7f2;
+            --owa-text: #333333;
+            --internal-blue: #2d6671;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            line-height: 1.6;
+            color: var(--owa-text);
+            background-color: #fff;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 10%;
+            background: white;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--owa-orange);
+            text-transform: lowercase;
+            text-decoration: none;
+        }
+
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 2rem; }
+        nav ul li a { 
+            text-decoration: none; 
+            color: var(--owa-orange); 
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            padding: 4rem 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            line-height: 1;
+            color: var(--owa-orange);
+            font-weight: 800;
+            margin-bottom: 2rem;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- SECTION WHAT IS AT STAKE (Le cadre orange) --- */
+        .at-stake {
+            background-color: var(--owa-orange);
+            color: white;
+            padding: 4rem 10%;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        .at-stake h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        /* --- LAYOUT COLONNES (Priorities & News) --- */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            padding: 4rem 10%;
+        }
+
+        .priorities h2, .recent-news h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+        }
+
+        .news-item {
+            border-top: 1px solid #ddd;
+            padding: 1rem 0;
+        }
+
+        /* --- STAKEHOLDER MAP SECTION --- */
+        .map-section {
+            background-color: var(--owa-bg-light);
+            padding: 4rem 10%;
+            text-align: center;
+        }
+
+        #map-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background: white;
+            border: 1px solid #eee;
+            margin-top: 2rem;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .stakeholder {
+            position: absolute;
+            padding: 0.6rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 10;
+            transition: transform 0.2s;
+            border: 2px solid transparent;
+        }
+        .stakeholder:hover { transform: scale(1.05); }
+
+        /* Couleurs du Map conformes à votre fichier */
+        .group-internal { background: var(--internal-blue); color: white; }
+        .group-central { background: var(--owa-orange); color: white; }
+        .group-external { background: #bb461b; color: white; }
+        .group-governance { background: #628F94; color: white; }
+        .group-hybrid { background: #2e7880; color: white; }
+
+        /* Modal simple */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center; justify-content: center;
+        }
+        .modal-content {
+            background: white; padding: 2rem; max-width: 600px; border-radius: 8px; position: relative;
+        }
+        .close-btn { position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 1.5rem; }
+
+        @media (max-width: 768px) {
+            header, .at-stake, .main-content { grid-template-columns: 1fr; }
+            h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">ai trade union</a>
+        <ul>
+            <li><a href="index.html#vision">Our Vision</a></li>
+            <li><a href="stakeholder_map.html">Stakeholder Map</a></li> 
+            <li><a href="index.html#action">Call for Action</a></li>
+            <li><a href="#join" style="border: 2px solid var(--owa-orange); padding: 5px 15px; border-radius: 20px;">Join Us</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div class="hero-text">
+            <h1>ai trade union vision.</h1>
+            <p>Nous sommes un collectif de fonctionnaires et d'experts engagés pour une intelligence artificielle transparente et au service du bien public.</p>
+        </div>
+        <div class="hero-image">
+            </div>
+    </header>
+
+    <section class="at-stake">
+        <h2>what is at stake?</h2>
+        <div>
+            <p>L'automatisation des services publics sans contrôle démocratique menace l'équité des décisions administratives. Nous nous battons pour que l'humain reste au cœur du système.</p>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <div class="priorities">
+            <h2>our top three priorities</h2>
+            <p><strong>1. Transparence Algorithmique:</strong> Accès aux codes sources pour les audits citoyens.</p>
+            <p><strong>2. Protection des agents:</strong> Garantir que l'IA assiste les fonctionnaires sans les remplacer.</p>
+            <p><strong>3. Souveraineté Numérique:</strong> Réduire la dépendance aux prestataires privés opaques.</p>
+        </div>
+        
+        <div class="recent-news">
+            <h2>recent updates</h2>
+            <div class="news-item">
+                <p><small>18 Dec 2025</small><br><strong>Lancement de la cartographie des acteurs de l'IA.</strong></p>
+            </div>
+            <div class="news-item">
+                <p><small>10 Dec 2025</small><br><strong>Réponse au rapport sur l'automatisation.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="map" class="map-section">
+        <h2>stakeholder map</h2>
+        <p>Cliquez sur un acteur pour voir sa position et les tensions associées.</p>
+        <div id="map-container">
+            <svg id="connections" style="position:absolute; width:100%; height:100%; pointer-events:none;"></svg>
+        </div>
+    </section>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title" style="color:var(--owa-orange)"></h2>
+            <div id="modal-body" style="margin-top:1rem"></div>
+        </div>
+    </div>
+
+    <script>
+        // Intégration de vos données Stakeholders
+        const stakeholders = [
+            { id: 'civil-servants', name: 'Civil Servants', group: 'internal', x: 15, y: 25 },
+            { id: 'it-department', name: 'Internal IT', group: 'internal', x: 8, y: 45 },
+            { id: 'trade-union', name: 'Trade Union (Our Vision)', group: 'central', x: 45, y: 52 },
+            { id: 'external-ai', name: 'External AI Contractor', group: 'governance', x: 45, y: 38 },
+            { id: 'political-leadership', name: 'Political Leadership', group: 'hybrid', x: 75, y: 20 },
+            { id: 'civil-society', name: 'Civil Society', group: 'external', x: 75, y: 65 }
+        ];
+
+        const container = document.getElementById('map-container');
+        
+        stakeholders.forEach(sh => {
+            const div = document.createElement('div');
+            div.className = `stakeholder group-${sh.group}`;
+            div.textContent = sh.name;
+            div.style.left = `${sh.x}%`;
+            div.style.top = `${sh.y}%`;
+            div.onclick = () => openModal(sh.name, "Position détaillée à venir...");
+            container.appendChild(div);
+        });
+
+        function openModal(title, body) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-body').textContent = body;
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
