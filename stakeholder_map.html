@@ -197,18 +197,54 @@
             .stakeholder { font-size: 0.7rem; padding: 0.5rem 0.8rem; }
             .page-banner h1 { font-size: 2.2rem; }
         }
+
+                /* Alignement Logo Header */
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 15px; /* Espace entre logo et texte */
+        }
+
+        .header-logo {
+            height: 150px; /* Ajustez selon votre logo */
+            width: auto;
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--owa-orange);
+            text-transform: lowercase;
+        }
+
+        /* Style du bouton Join Us */
+        .join-btn {
+            border: 2px solid var(--owa-orange);
+            padding: 8px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .join-btn:hover {
+            background-color: var(--owa-orange);
+            color: white !important;
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo"> Human in the Loop Coalition</a>
+        <a href="index.html" class="logo-wrapper">
+            <img src="logo.png" alt="HCL Logo" class="header-logo">
+            <span class="logo-text">human in the loop coalition</span>
+        </a>
         <ul>
             <li><a href="index.html#vision">Our Vision</a></li>
             <li><a href="page.html?p=context">Context</a></li>
             <li><a href="stakeholder_map.html">Stakeholder Map</a></li> 
             <li><a href="page.html?p=action">Call for Action</a></li>
-            <li><a href="page.html?p=join" style="border: 2px solid var(--owa-orange); padding: 5px 15px; border-radius: 20px;">Join Us</a></li>
+            <li><a href="page.html?p=join" class="join-btn">Join Us</a></li>
         </ul>
     </nav>
 

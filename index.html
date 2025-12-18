@@ -201,27 +201,91 @@
             font-size: 1rem;
             color: var(--owa-text);
         }
+
+        /* Alignement Logo Header */
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 15px; /* Espace entre logo et texte */
+        }
+
+        .header-logo {
+            height: 150px; /* Ajustez selon votre logo */
+            width: auto;
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--owa-orange);
+            text-transform: lowercase;
+        }
+
+        /* Style du bouton Join Us */
+        .join-btn {
+            border: 2px solid var(--owa-orange);
+            padding: 8px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .join-btn:hover {
+            background-color: var(--owa-orange);
+            color: white !important;
+        }
+
+        /* Image à droite de la Vision */
+        .hero-section {
+            padding: 6rem 10% 4rem 10%;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr; /* Texte plus large que l'image */
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-img {
+            width: 40%;
+            height: auto;
+            border-radius: 8px; /* Optionnel : bords arrondis style OWA */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Optionnel : ombre légère */
+        }
+
+        @media (max-width: 900px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .logo-wrapper {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">Human in the Loop Coalition</a>
+        <a href="index.html" class="logo-wrapper">
+            <img src="logo.png" alt="HCL Logo" class="header-logo">
+            <span class="logo-text">human in the loop coalition</span>
+        </a>
         <ul>
             <li><a href="index.html#vision">Our Vision</a></li>
             <li><a href="page.html?p=context">Context</a></li>
             <li><a href="stakeholder_map.html">Stakeholder Map</a></li> 
             <li><a href="page.html?p=action">Call for Action</a></li>
-            <li><a href="page.html?p=join" style="border: 2px solid var(--owa-orange); padding: 5px 15px; border-radius: 20px;">Join Us</a></li>
+            <li><a href="page.html?p=join" class="join-btn">Join Us</a></li>
         </ul>
     </nav>
-    <header>
+    <header class="hero-section">
         <div class="hero-text">
             <h1>HCL's vision.</h1>
-            <p>We are the first trade union of the ministry of interior and we advocate for the <b> rights of civil servants </b> within all branches: immigration, visa, police, fines, civil protection.</p>
+            <p>We are the first trade union of the ministry of interior and we advocate for the <strong>rights of civil servants</strong> within all branches: immigration, visa, police, fines, civil protection.</p>
         </div>
-        <div class="hero-image">
-            </div>
+        <div class="hero-image-container">
+            <img src="slogan.png" alt="HCL slogan" class="hero-img">
+        </div>
     </header>
 
     <section class="at-stake">
