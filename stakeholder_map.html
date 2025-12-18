@@ -1,44 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stakeholder Map</title>
+    <title>Stakeholder Map - AI Trade Union</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --main-color: #CD4C1D;
-            --main-light: #f4e4df;
-            --main-dark: #9a3615;
-            --body-bg: #ffffff;
-            --body-text: #333333;
+            --owa-orange: #CD4C1D;
+            --owa-black: #1a1a1a;
+            --owa-bg-light: #f9f7f2;
+            --owa-text: #333333;
+            --internal-blue: #2d6671;
             --text-inv: #ffffff;
-            --n-dark: #2c3e50;
-            --n-light: #ecf0f1;
-            --fvs-black: "wght" 900;
-            --fvs-bold: "wght" 700;
-            --fvs-regular: "wght" 400;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: var(--body-bg);
-            color: var(--body-text);
-            padding: 2rem;
+            font-family: 'Sora', sans-serif;
+            line-height: 1.6;
+            color: var(--owa-text);
+            background-color: #fff;
             overflow-x: hidden;
         }
 
-        h1 {
-            text-align: center;
-            color: var(--main-color);
-            margin-bottom: 2rem;
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 10%;
+            background: white;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--owa-orange);
             text-transform: lowercase;
+            text-decoration: none;
+        }
+
+        nav ul { display: flex; list-style: none; align-items: center; }
+        nav ul li { margin-left: 2rem; }
+        nav ul li a { 
+            text-decoration: none; 
+            color: var(--owa-orange); 
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* --- BANNIÈRE ORANGE --- */
+        .page-banner {
+            background-color: var(--owa-orange);
+            color: white;
+            padding: 4rem 10%;
+        }
+
+        .page-banner h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            text-transform: lowercase;
+        }
+
+        /* --- SECTION CONTEXTE --- */
+        .map-intro {
+            padding: 3rem 10%;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            background-color: white;
+        }
+
+        .map-intro h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--owa-orange);
+            text-transform: lowercase;
+        }
+
+        /* --- STAKEHOLDER MAP SECTION --- */
+        .map-section {
+            background-color: var(--owa-bg-light);
+            padding: 4rem 5%;
+            text-align: center;
         }
 
         #map-container {
@@ -48,9 +94,11 @@
             height: 80vh;
             min-height: 600px;
             margin: 0 auto;
-            background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
-            border: 2px solid var(--n-light);
-            border-radius: 8px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         svg {
@@ -64,192 +112,140 @@
 
         .stakeholder {
             position: absolute;
-            padding: 0.8em 1.2em;
-            border-radius: 2em;
+            padding: 0.7rem 1.1rem;
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             z-index: 10;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
             white-space: nowrap;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
         }
 
         .stakeholder:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transform: translate(-50%, -55%);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
 
-        /* Color groups */
-        .group-internal {
-            background: linear-gradient(135deg, #79B2BD 10%, #2d6671 90%);
-            color: var(--text-inv);
-            border: 2px solid #2d6671;
-        }
+        /* Couleurs des groupes basées sur votre fichier original */
+        .group-internal { background: linear-gradient(135deg, #79B2BD 10%, #2d6671 90%); color: white; }
+        .group-central { background: linear-gradient(135deg, #e74c3c 0%, #9A3615 100%); color: white; }
+        .group-external { background: linear-gradient(135deg, #CD4C1D 0%, #bb461b 100%); color: white; }
+        .group-governance { background: linear-gradient(135deg, #628F94 0%, #2e7880 100%); color: white; }
+        .group-hybrid { background: linear-gradient(135deg, #2e7880 50%, #79B2BD 50%); color: white; border-radius: 8px; }
 
-        .group-central {
-            background: linear-gradient(135deg, #e74c3c 0%, #9A3615 100%);
-            color: var(--text-inv);
-            border: 2px solid rgb(120, 32, 24);
-        }
-
-        .group-external {
-            background: linear-gradient(135deg, #CD4C1D 0%, #bb461b 100%);
-            color: var(--text-inv);
-            border: 2px solid #6f290f;
-        }
-
-        .group-governance {
-            background: linear-gradient(135deg, #628F94 0%, #2e7880 100%);
-            color: var(--text-inv);
-            border: 2px solid #174f55;
-        }
-
-        .group-hybrid {
-            background: linear-gradient(135deg, #2e7880 50%, #79B2BD 50%);
-            color: var(--text-inv);
-            border: 2px solid #174f55;
-            border-radius: 8px;
-        }
-
-        /* Modal styles */
+        /* --- MODAL --- */
         .modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
             z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
+            align-items: center; justify-content: center;
         }
 
-        .modal.active {
-            display: flex;
-        }
+        .modal.active { display: flex; }
 
         .modal-content {
-            background: var(--body-bg);
-            border-radius: 8px;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
+            background: white;
+            padding: 3rem;
+            max-width: 650px;
+            width: 90%;
+            border-radius: 12px;
             position: relative;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            padding: 2rem;
+            max-height: 85vh;
+            overflow-y: auto;
         }
 
         .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            border-bottom: 3px solid var(--owa-orange);
             margin-bottom: 1.5rem;
             padding-bottom: 1rem;
-            border-bottom: 2px solid var(--main-color);
         }
 
         .modal-header h2 {
-            color: var(--main-color);
-            font-size: 1.5rem;
+            color: var(--owa-orange);
+            font-size: 1.8rem;
             text-transform: lowercase;
         }
 
         .close-btn {
-            background: var(--n-dark);
-            color: var(--text-inv);
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--owa-black);
+            color: white;
             border: none;
-            width: 32px;
-            height: 32px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             cursor: pointer;
             font-size: 1.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
         }
 
-        .close-btn:hover {
-            background: var(--main-color);
-            transform: rotate(90deg);
-        }
-
-        .modal-body {
-            line-height: 1.6;
-        }
-
-        .modal-body p {
-            margin-bottom: 1rem;
-        }
-
-        .modal-body h3 {
-            color: var(--main-color);
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            color: var(--n-dark);
-        }
+        .modal-body h3 { color: var(--owa-orange); margin: 1.5rem 0 0.5rem; }
+        .modal-body p { margin-bottom: 1rem; line-height: 1.8; }
 
         @media (max-width: 768px) {
-            #map-container {
-                height: 70vh;
-                min-height: 500px;
-            }
-
-            .stakeholder {
-                font-size: 0.75rem;
-                padding: 0.6em 1em;
-            }
-
-            .modal-content {
-                padding: 1.5rem;
-            }
+            .map-intro { grid-template-columns: 1fr; gap: 1rem; }
+            .stakeholder { font-size: 0.7rem; padding: 0.5rem 0.8rem; }
+            .page-banner h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
-    <h1>AI Trade Union Vision - Stakeholder Map</h1>
-    
-    <div id="map-container">
-        <svg id="connections"></svg>
-    </div>
+
+    <nav>
+        <a href="index.html" class="logo">ai trade union</a>
+        <ul>
+            <li><a href="index.html#vision">Our Vision</a></li>
+            <li><a href="page.html?p=context">Context</a></li>
+            <li><a href="stakeholder_map.html">Stakeholder Map</a></li> 
+            <li><a href="page.html?p=action">Call for Action</a></li>
+            <li><a href="page.html?p=join" style="border: 2px solid var(--owa-orange); padding: 5px 15px; border-radius: 20px;">Join Us</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-banner">
+        <h1>stakeholder map.</h1>
+    </header>
+
+    <section class="map-intro">
+        <h2>Mapping the tensions</h2>
+        <p>Cette carte interactive présente les acteurs clés impliqués dans le déploiement de l'IA au sein du Ministère. <strong>Cliquez sur chaque bulle pour découvrir leur position officielle</strong>, leurs intérêts et les points de friction identifiés par notre syndicat.</p>
+    </section>
+
+    <section class="map-section">
+        <div id="map-container">
+            <svg id="connections"></svg>
+        </div>
+    </section>
 
     <div id="modal" class="modal">
         <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
             <div class="modal-header">
                 <h2 id="modal-title"></h2>
-                <button class="close-btn" onclick="closeModal()">×</button>
             </div>
-            <div class="modal-body" id="modal-body">
-                <div class="loading">Loading...</div>
-            </div>
+            <div id="modal-body" class="modal-body"></div>
         </div>
     </div>
 
     <script>
         const stakeholders = [
-            // Internal group (blue)
             { id: 'civil-servants', name: 'Civil Servants (Caseworkers)', group: 'internal', x: 15, y: 25 },
             { id: 'it-department', name: 'Internal IT Department', group: 'internal', x: 8, y: 45 },
             { id: 'ethics-board', name: 'Ethics Board', group: 'internal', x: 15, y: 60 },
             { id: 'legal-department', name: 'Legal Department', group: 'internal', x: 35, y: 15 },
-            
-            // Governance (purple)
             { id: 'data-protection', name: 'Data Protection Authority', group: 'governance', x: 20, y: 75 },
             { id: 'external-ai', name: 'External AI Contractor', group: 'governance', x: 45, y: 38 },
-            
-            // Central node (red)
             { id: 'trade-union', name: 'Trade Union (Our Vision)', group: 'central', x: 45, y: 52 },
-            
-            // External group (pink/purple)
             { id: 'political-leadership', name: 'Political Leadership', group: 'hybrid', x: 70, y: 15 },
             { id: 'media', name: 'Media', group: 'external', x: 80, y: 35 },
             { id: 'researchers', name: 'Researchers', group: 'external', x: 75, y: 50 },
@@ -259,56 +255,37 @@
         ];
 
         const connections = [
-            ['civil-servants', 'it-department'],
-            ['civil-servants', 'legal-department'],
-            ['civil-servants', 'external-ai'],
-            ['civil-servants', 'trade-union'],
-            ['it-department', 'ethics-board'],
-            ['it-department', 'trade-union'],
-            ['ethics-board', 'data-protection'],
-            ['ethics-board', 'external-ai'],
-            ['data-protection', 'trade-union'],
-            ['data-protection', 'external-ai'],
-            ['legal-department', 'external-ai'],
-            ['legal-department', 'political-leadership'],
-            ['external-ai', 'trade-union'],
-            ['external-ai', 'media'],
-            ['external-ai', 'political-leadership'],
-            ['trade-union', 'media'],
-            ['trade-union', 'researchers'],
-            ['trade-union', 'civil-society'],
-            ['trade-union', 'political-leadership'],
-            ['political-leadership', 'media'],
-            ['media', 'researchers'],
-            ['researchers', 'civil-society'],
-            ['civil-society', 'lydoria-rights'],
-            ['civil-society', 'migrant-solidarity'],
+            ['civil-servants', 'it-department'], ['civil-servants', 'legal-department'],
+            ['civil-servants', 'external-ai'], ['civil-servants', 'trade-union'],
+            ['it-department', 'ethics-board'], ['it-department', 'trade-union'],
+            ['ethics-board', 'data-protection'], ['ethics-board', 'external-ai'],
+            ['data-protection', 'trade-union'], ['data-protection', 'external-ai'],
+            ['legal-department', 'external-ai'], ['legal-department', 'political-leadership'],
+            ['external-ai', 'trade-union'], ['external-ai', 'media'],
+            ['external-ai', 'political-leadership'], ['trade-union', 'media'],
+            ['trade-union', 'researchers'], ['trade-union', 'civil-society'],
+            ['trade-union', 'political-leadership'], ['political-leadership', 'media'],
+            ['media', 'researchers'], ['researchers', 'civil-society'],
+            ['civil-society', 'lydoria-rights'], ['civil-society', 'migrant-solidarity'],
             ['lydoria-rights', 'migrant-solidarity']
         ];
 
-        // Create stakeholder elements
         const container = document.getElementById('map-container');
         const positions = {};
 
+        // Création des bulles
         stakeholders.forEach(sh => {
             const div = document.createElement('div');
             div.className = `stakeholder group-${sh.group}`;
             div.textContent = sh.name;
             div.style.left = `${sh.x}%`;
             div.style.top = `${sh.y}%`;
-            div.style.transform = 'translate(-50%, -50%)';
             div.onclick = () => openModal(sh.id, sh.name);
             container.appendChild(div);
-            
-            // Store position for drawing connections
-            positions[sh.id] = { 
-                x: sh.x, 
-                y: sh.y,
-                element: div
-            };
+            positions[sh.id] = { x: sh.x, y: sh.y };
         });
 
-        // Draw connections
+        // Dessin des lignes
         function drawConnections() {
             const svg = document.getElementById('connections');
             const containerRect = container.getBoundingClientRect();
@@ -317,17 +294,13 @@
             connections.forEach(([id1, id2]) => {
                 const pos1 = positions[id1];
                 const pos2 = positions[id2];
+                if (!pos1 || !pos2) return;
                 
-                const x1 = (pos1.x / 100) * containerRect.width;
-                const y1 = (pos1.y / 100) * containerRect.height;
-                const x2 = (pos2.x / 100) * containerRect.width;
-                const y2 = (pos2.y / 100) * containerRect.height;
-
                 const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                line.setAttribute('x1', x1);
-                line.setAttribute('y1', y1);
-                line.setAttribute('x2', x2);
-                line.setAttribute('y2', y2);
+                line.setAttribute('x1', (pos1.x / 100) * containerRect.width);
+                line.setAttribute('y1', (pos1.y / 100) * containerRect.height);
+                line.setAttribute('x2', (pos2.x / 100) * containerRect.width);
+                line.setAttribute('y2', (pos2.y / 100) * containerRect.height);
                 line.setAttribute('stroke', '#bdc3c7');
                 line.setAttribute('stroke-width', '2');
                 line.setAttribute('stroke-opacity', '0.4');
@@ -335,68 +308,39 @@
             });
         }
 
-        drawConnections();
         window.addEventListener('resize', drawConnections);
+        drawConnections();
 
-        // Modal functions
-        function openModal(id, name) {
+        // Fonctions Modal et Markdown
+        async function openModal(id, name) {
             const modal = document.getElementById('modal');
-            const title = document.getElementById('modal-title');
             const body = document.getElementById('modal-body');
-            
-            title.textContent = name;
-            body.innerHTML = '<div class="loading">Loading position...</div>';
+            document.getElementById('modal-title').textContent = name;
+            body.innerHTML = '<p>Chargement...</p>';
             modal.classList.add('active');
             
-            // Load markdown content
             const filename = `${id.replace(/-/g, '_')}_position.md`;
-            loadMarkdown(filename, body);
-        }
-
-        function closeModal() {
-            document.getElementById('modal').classList.remove('active');
-        }
-
-        // Close modal on background click
-        document.getElementById('modal').onclick = function(e) {
-            if (e.target === this) closeModal();
-        };
-
-        // Close on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-
-        // Load markdown file
-        async function loadMarkdown(filename, container) {
             try {
                 const response = await fetch(filename);
-                if (!response.ok) throw new Error('File not found');
-                
+                if (!response.ok) throw new Error();
                 const text = await response.text();
-                container.innerHTML = parseMarkdown(text);
-            } catch (error) {
-                container.innerHTML = `
-                    <p><em>Position document not yet available.</em></p>
-                    <p>Please create a file named <code>${filename}</code> with this stakeholder's position information.</p>
-                `;
+                body.innerHTML = parseMarkdown(text);
+            } catch {
+                body.innerHTML = `<p><em>Document non disponible (${filename}).</em></p>`;
             }
         }
 
-        // Simple markdown parser
+        function closeModal() { document.getElementById('modal').classList.remove('active'); }
+        
         function parseMarkdown(text) {
             return text
-                .replace(/### (.*?)$/gm, '<h3>$1</h3>')
-                .replace(/## (.*?)$/gm, '<h3>$1</h3>')
-                .replace(/# (.*?)$/gm, '<h3>$1</h3>')
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                .replace(/\*(.*?)\*/g, '<em>$1</em>')
-                .replace(/\n\n/g, '</p><p>')
-                .replace(/^(.+)$/gm, '<p>$1</p>')
-                .replace(/<p><h3>/g, '<h3>')
-                .replace(/<\/h3><\/p>/g, '</h3>')
-                .replace(/<p><\/p>/g, '');
+                .replace(/### (.*?)$/gm, '<h3>$1</h3>').replace(/## (.*?)$/gm, '<h3>$1</h3>').replace(/# (.*?)$/gm, '<h3>$1</h3>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/\n\n/g, '</p><p>').replace(/^(.+)$/gm, '<p>$1</p>')
+                .replace(/<p><h3>/g, '<h3>').replace(/<\/h3><\/p>/g, '</h3>').replace(/<p><\/p>/g, '');
         }
+
+        document.getElementById('modal').onclick = (e) => { if (e.target.id === 'modal') closeModal(); };
     </script>
 </body>
 </html>
