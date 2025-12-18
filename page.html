@@ -53,14 +53,23 @@
             margin-bottom: 1rem;
         }
 
-        #markdown-content h2 { font-size: 2.5rem; }
-        #markdown-content h3 { font-size: 1.8rem; }
+        #markdown-content h2, 
+        #markdown-content h3 {
+            color: var(--owa-orange); /* Utilise votre variable #CD4C1D */
+            font-weight: 800;
+            text-transform: lowercase; /* Style OWA */
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            font-size: 2.2rem;
+        }
 
         #markdown-content p { 
             font-size: 1.2rem; 
             line-height: 1.8;
             margin-bottom: 1.5rem;
             color: var(--owa-text);
+            max-width: 800px; /* Pour une meilleure lisibilité sur grand écran */
+            margin-bottom: 1.5rem;
             text-align: justify; /* Pour un look plus pro sur toute la largeur */
         }
         .content-container ul { margin-left: 1.5rem; margin-bottom: 1.5rem; }
@@ -124,12 +133,22 @@
         // Parseur Markdown minimaliste
         function parseMarkdown(text) {
             return text
+                // Nettoyage des espaces vides inutiles en début/fin
+                .trim()
+                // Titres H2 (##) - Deviennent orange
                 .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                // Titres H3 (###) - Deviennent orange
                 .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-                .replace(/^\* (.*$)/gim, '<ul><li>$1</li></ul>') // Simplifié
+                // Si vous utilisez # à l'intérieur du texte, on le traite en H2
+                .replace(/^# (.*$)/gim, '<h2>$1</h2>')
+                // Gras
                 .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
+                // Paragraphes (double retour à la ligne)
                 .replace(/\n\n/gim, '</p><p>')
-                .replace(/<\/ul>\s*<ul>/gim, '') // Nettoyage listes
+                // Listes à puces
+                .replace(/^\* (.*$)/gim, '<ul><li>$1</li></ul>')
+                .replace(/<\/ul>\s*<ul>/gim, '')
+                // On enveloppe le tout dans un paragraphe si ce n'est pas déjà fait
                 .replace(/^([^<].*)$/gim, '<p>$1</p>');
         }
 
