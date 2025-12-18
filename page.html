@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trade Union</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --owa-orange: #CD4C1D;
+            --owa-bg-light: #f9f7f2;
+            --owa-text: #333333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Sora', sans-serif; line-height: 1.6; color: var(--owa-text); }
+
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 10%; }
+        .logo { font-weight: 800; font-size: 1.5rem; color: var(--owa-orange); text-decoration: none; text-transform: lowercase; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav ul li a { text-decoration: none; color: var(--owa-orange); font-weight: 700; font-size: 0.9rem; }
+
+        /* Bannière Orange */
+        .banner {
+            background-color: var(--owa-orange);
+            color: white;
+            padding: 4rem 10%;
+            text-align: left;
+        }
+        .banner h1 { font-size: 3.5rem; font-weight: 800; text-transform: lowercase; }
+
+        /* Contenu Markdown */
+        .content-container {
+            padding: 4rem 10%;
+            max-width: 900px;
+        }
+        .content-container h2 { color: var(--owa-orange); margin: 2rem 0 1rem; font-size: 2rem; }
+        .content-container p { margin-bottom: 1.2rem; font-size: 1.1rem; }
+        .content-container ul { margin-left: 1.5rem; margin-bottom: 1.5rem; }
+        .content-container li { margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">ai trade union</a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="stakeholder_map.html">Stakeholder Map</a></li>
+            <li><a href="page.html?p=action">Call for Action</a></li>
+            <li><a href="page.html?p=join" style="border: 2px solid var(--owa-orange); padding: 5px 15px; border-radius: 20px;">Join Us</a></li>
+        </ul>
+    </nav>
+
+    <header class="banner">
+        <h1 id="page-title">Loading...</h1>
+    </header>
+
+    <main class="content-container" id="markdown-content">
+        </main>
+
+    <script>
+        // 1. Récupérer le nom de la page dans l'URL (ex: ?p=action)
+        const params = new URLSearchParams(window.location.search);
+        const pageId = params.get('p') || 'action';
+
+        // 2. Charger le fichier Markdown
+        async function loadContent() {
+            try {
+                const response = await fetch(`${pageId}.md`);
+                if (!response.ok) throw new Error("Page non trouvée");
+                const text = await response.text();
+                
+                // Extraction simple du premier titre H1 pour la bannière
+                const lines = text.split('\n');
+                let title = "AI Trade Union";
+                if (lines[0].startsWith('# ')) {
+                    title = lines[0].replace('# ', '');
+                    // On enlève le titre du corps du texte pour ne pas l'avoir en double
+                    const bodyText = lines.slice(1).join('\n');
+                    document.getElementById('markdown-content').innerHTML = parseMarkdown(bodyText);
+                } else {
+                    document.getElementById('markdown-content').innerHTML = parseMarkdown(text);
+                }
+                
+                document.getElementById('page-title').textContent = title;
+            } catch (err) {
+                document.getElementById('page-title').textContent = "Erreur";
+                document.getElementById('markdown-content').innerHTML = "<p>Désolé, cette page n'existe pas.</p>";
+            }
+        }
+
+        // Parseur Markdown minimaliste
+        function parseMarkdown(text) {
+            return text
+                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                .replace(/^\* (.*$)/gim, '<ul><li>$1</li></ul>') // Simplifié
+                .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
+                .replace(/\n\n/gim, '</p><p>')
+                .replace(/<\/ul>\s*<ul>/gim, '') // Nettoyage listes
+                .replace(/^([^<].*)$/gim, '<p>$1</p>');
+        }
+
+        loadContent();
+    </script>
+</body>
+</html>
