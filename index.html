@@ -160,6 +160,47 @@
             header, .at-stake, .main-content { grid-template-columns: 1fr; }
             h1 { font-size: 2.5rem; }
         }
+
+        /* Section Priorités avec fond beige */
+        .priorities-container {
+            background-color: #f4e4df; /* Beige clair type OWA */
+            padding: 3rem;
+            border-radius: 8px;
+        }
+
+        .priority-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        /* Le cercle orange numéroté */
+        .priority-number {
+            background-color: var(--owa-orange);
+            color: white;
+            font-weight: 800;
+            min-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .priority-content h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--owa-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .priority-content p {
+            font-size: 1rem;
+            color: var(--owa-text);
+        }
     </style>
 </head>
 <body>
@@ -168,6 +209,7 @@
         <a href="index.html" class="logo">ai trade union</a>
         <ul>
             <li><a href="index.html#vision">Our Vision</a></li>
+            <li><a href="page.html?p=context">Context</a></li>
             <li><a href="stakeholder_map.html">Stakeholder Map</a></li> 
             <li><a href="page.html?p=action">Call for Action</a></li>
             <li><a href="page.html?p=join" style="border: 2px solid var(--owa-orange); padding: 5px 15px; border-radius: 20px;">Join Us</a></li>
@@ -190,13 +232,38 @@
         </div>
     </section>
 
+    
     <section class="main-content">
         <div class="priorities">
             <h2>our top three priorities</h2>
-            <p><strong>1. No replacement of human expertise:</strong> Ensure that AI supports decision-making rather than replace human judgment.</p>
-            <p><strong>2. Force a genuine social dialogue:</strong> Civil servants can shape the project, not just approve it without any discussion.</p>
-            <p><strong>3. Be a force of proposition:</strong> We criticize, we denounce, but we also propose alternatives that benefit civil servants, the administration, and citizens.</p>
+            
+            <div class="priorities-container">
+                <div class="priority-item">
+                    <div class="priority-number">1</div>
+                    <div class="priority-content">
+                        <h3>No replacement of human expertise</h3>
+                        <p>Ensure that AI supports decision-making rather than replace human judgment.</p>
+                    </div>
+                </div>
+
+                <div class="priority-item">
+                    <div class="priority-number">2</div>
+                    <div class="priority-content">
+                        <h3>Force a genuine social dialogue</h3>
+                        <p>Civil servants can shape the project, not just approve it without any discussion.</p>
+                    </div>
+                </div>
+
+                <div class="priority-item">
+                    <div class="priority-number">3</div>
+                    <div class="priority-content">
+                        <h3>Be a force of proposition</h3>
+                        <p>We criticize, we denounce, but we also propose alternatives that protect both the working conditions of agents and the rights of citizens.</p>
+                    </div>
+                </div>
+            </div>
         </div>
+
         
         <div class="recent-news">
             <h2>recent updates</h2>
