@@ -169,15 +169,14 @@
         <ul>
             <li><a href="index.html#vision">Our Vision</a></li>
             <li><a href="stakeholder_map.html">Stakeholder Map</a></li> 
-            <li><a href="index.html#action">Call for Action</a></li>
-            <li><a href="#join" style="border: 2px solid var(--owa-orange); padding: 5px 15px; border-radius: 20px;">Join Us</a></li>
+            <li><a href="page.html?p=action">Call for Action</a></li>
+            <li><a href="page.html?p=join" style="border: 2px solid var(--owa-orange); padding: 5px 15px; border-radius: 20px;">Join Us</a></li>
         </ul>
     </nav>
-
     <header>
         <div class="hero-text">
             <h1>ai trade union vision.</h1>
-            <p>Nous sommes un collectif de fonctionnaires et d'experts engagés pour une intelligence artificielle transparente et au service du bien public.</p>
+            <p>We are the first trade union of the ministry of interior and we advocate for the <b> rights of civil servants </b> within all branches: immigration, visa, police, fines, civil protection.</p>
         </div>
         <div class="hero-image">
             </div>
@@ -186,77 +185,32 @@
     <section class="at-stake">
         <h2>what is at stake?</h2>
         <div>
-            <p>L'automatisation des services publics sans contrôle démocratique menace l'équité des décisions administratives. Nous nous battons pour que l'humain reste au cœur du système.</p>
+            <p>Social dialogue is a pillar of Lydorian democracy. We fight so that workers are not just consulted, they are heard and taken their positions are taken into account. We protect jobs, working conditions, and professional autonomy of civil servants in the ministry.</p>
+            <p>We believe this dialogue is critical to ensure puiblic administration remains a good place for civil servants and a service to all citizens, at the foundation of Lydoria's rule of law.</p>
         </div>
     </section>
 
     <section class="main-content">
         <div class="priorities">
             <h2>our top three priorities</h2>
-            <p><strong>1. Transparence Algorithmique:</strong> Accès aux codes sources pour les audits citoyens.</p>
-            <p><strong>2. Protection des agents:</strong> Garantir que l'IA assiste les fonctionnaires sans les remplacer.</p>
-            <p><strong>3. Souveraineté Numérique:</strong> Réduire la dépendance aux prestataires privés opaques.</p>
+            <p><strong>1. No replacement of human expertise:</strong> Ensure that AI supports decision-making rather than replace human judgment.</p>
+            <p><strong>2. Force a genuine social dialogue:</strong> Civil servants can shape the project, not just approve it without any discussion.</p>
+            <p><strong>3. Be a force of proposition:</strong> We criticize, we denounce, but we also propose alternatives that benefit civil servants, the administration, and citizens.</p>
         </div>
         
         <div class="recent-news">
             <h2>recent updates</h2>
             <div class="news-item">
-                <p><small>18 Dec 2025</small><br><strong>Lancement de la cartographie des acteurs de l'IA.</strong></p>
+                <p><small>02 Dec 2025</small><br><strong>The internet ethical board raises concern over rapid deployment of AI tool</strong></p>
             </div>
             <div class="news-item">
-                <p><small>10 Dec 2025</small><br><strong>Réponse au rapport sur l'automatisation.</strong></p>
+                <p><small>13 Oct 2025</small><br><strong>Minister announces consultation of civil servants in midst of new AI announcement</strong></p>
+            </div>
+            <div class="news-item">
+                <p><small>10 Oct 2025</small><br><strong>Minister Hardamain announces roll-out of a new AI tool for civil servants</strong></p>
             </div>
         </div>
     </section>
 
-    <section id="map" class="map-section">
-        <h2>stakeholder map</h2>
-        <p>Cliquez sur un acteur pour voir sa position et les tensions associées.</p>
-        <div id="map-container">
-            <svg id="connections" style="position:absolute; width:100%; height:100%; pointer-events:none;"></svg>
-        </div>
-    </section>
-
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2 id="modal-title" style="color:var(--owa-orange)"></h2>
-            <div id="modal-body" style="margin-top:1rem"></div>
-        </div>
-    </div>
-
-    <script>
-        // Intégration de vos données Stakeholders
-        const stakeholders = [
-            { id: 'civil-servants', name: 'Civil Servants', group: 'internal', x: 15, y: 25 },
-            { id: 'it-department', name: 'Internal IT', group: 'internal', x: 8, y: 45 },
-            { id: 'trade-union', name: 'Trade Union (Our Vision)', group: 'central', x: 45, y: 52 },
-            { id: 'external-ai', name: 'External AI Contractor', group: 'governance', x: 45, y: 38 },
-            { id: 'political-leadership', name: 'Political Leadership', group: 'hybrid', x: 75, y: 20 },
-            { id: 'civil-society', name: 'Civil Society', group: 'external', x: 75, y: 65 }
-        ];
-
-        const container = document.getElementById('map-container');
-        
-        stakeholders.forEach(sh => {
-            const div = document.createElement('div');
-            div.className = `stakeholder group-${sh.group}`;
-            div.textContent = sh.name;
-            div.style.left = `${sh.x}%`;
-            div.style.top = `${sh.y}%`;
-            div.onclick = () => openModal(sh.name, "Position détaillée à venir...");
-            container.appendChild(div);
-        });
-
-        function openModal(title, body) {
-            document.getElementById('modal-title').textContent = title;
-            document.getElementById('modal-body').textContent = body;
-            document.getElementById('modal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-    </script>
 </body>
 </html>
