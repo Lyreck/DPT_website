@@ -25,18 +25,44 @@
         .banner {
             background-color: var(--owa-orange);
             color: white;
-            padding: 4rem 10%;
+            padding: 6rem 10% 4rem 10%; /* Augmenté pour l'impact */
             text-align: left;
         }
-        .banner h1 { font-size: 3.5rem; font-weight: 800; text-transform: lowercase; }
+        .banner h1 { 
+            font-size: 4rem; 
+            font-weight: 800; 
+            text-transform: lowercase; 
+            margin: 0;
+        }
 
-        /* Contenu Markdown */
+        /* --- CONTENU PLEINE LARGEUR --- */
         .content-container {
             padding: 4rem 10%;
-            max-width: 900px;
+            width: 100%; /* Prend toute la largeur */
+            max-width: 1200px; /* Limite pour la lisibilité sur très grands écrans */
+            margin: 0 auto; /* Centre le bloc */
         }
-        .content-container h2 { color: var(--owa-orange); margin: 2rem 0 1rem; font-size: 2rem; }
-        .content-container p { margin-bottom: 1.2rem; font-size: 1.1rem; }
+
+        /* --- STYLE DES TITRES MARKDOWN --- */
+        #markdown-content h2, 
+        #markdown-content h3 { 
+            color: var(--owa-orange); /* Couleur identique à la bannière */
+            font-weight: 800;
+            text-transform: lowercase;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #markdown-content h2 { font-size: 2.5rem; }
+        #markdown-content h3 { font-size: 1.8rem; }
+
+        #markdown-content p { 
+            font-size: 1.2rem; 
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--owa-text);
+            text-align: justify; /* Pour un look plus pro sur toute la largeur */
+        }
         .content-container ul { margin-left: 1.5rem; margin-bottom: 1.5rem; }
         .content-container li { margin-bottom: 0.5rem; }
     </style>
@@ -68,29 +94,32 @@
 
         // 2. Charger le fichier Markdown
         async function loadContent() {
-            try {
-                const response = await fetch(`${pageId}.md`);
-                if (!response.ok) throw new Error("Page non trouvée");
-                const text = await response.text();
-                
-                // Extraction simple du premier titre H1 pour la bannière
-                const lines = text.split('\n');
-                let title = "Human in the Loop Coalition";
-                if (lines[0].startsWith('# ')) {
-                    title = lines[0].replace('# ', '');
-                    // On enlève le titre du corps du texte pour ne pas l'avoir en double
-                    const bodyText = lines.slice(1).join('\n');
-                    document.getElementById('markdown-content').innerHTML = parseMarkdown(bodyText);
-                } else {
-                    document.getElementById('markdown-content').innerHTML = parseMarkdown(text);
-                }
-                
-                document.getElementById('page-title').textContent = title;
-            } catch (err) {
-                document.getElementById('page-title').textContent = "Erreur";
-                document.getElementById('markdown-content').innerHTML = "<p>Désolé, cette page n'existe pas.</p>";
+        try {
+            const response = await fetch(`${pageId}.md`);
+            if (!response.ok) throw new Error("Page non trouvée");
+            let text = await response.text();
+            
+            // Extraction du titre (première ligne commençant par #)
+            const lines = text.split('\n');
+            let title = "ai trade union";
+            let contentStartIndex = 0;
+
+            if (lines[0].startsWith('# ')) {
+                title = lines[0].replace('# ', '').toLowerCase();
+                contentStartIndex = 1; // On commence le rendu après le titre
             }
+
+            document.getElementById('page-title').textContent = title;
+            
+            // On rejoint le reste du texte et on parse
+            const bodyContent = lines.slice(contentStartIndex).join('\n');
+            document.getElementById('markdown-content').innerHTML = parseMarkdown(bodyContent);
+            
+        } catch (err) {
+            document.getElementById('page-title').textContent = "erreur";
+            document.getElementById('markdown-content').innerHTML = "<p>Désolé, cette page n'existe pas.</p>";
         }
+    }
 
         // Parseur Markdown minimaliste
         function parseMarkdown(text) {
