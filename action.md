@@ -2,6 +2,8 @@
 
 No AI without us: **No automation without consultation**. Join the fight to halt risky deployment and force real safeguards.
 
+![No automation without consultation](slogan.png)
+
 # 1. Sign the petition: stop risky AI
 We refuse to let an opaque algorithm decide citizenship. Demand a moratorium until independent audits on bias, legality, and workload are public, plus a no job cuts guarantee for 10 years. Management announced rollout Oct 10 - consultation came too late. Add your voice now.
 → [Add your name now](https://petitions.assemblee-nationale.fr/?locale=fr).

@@ -146,6 +146,26 @@
             .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
             .map-intro { padding: 3rem 5%; }
         }
+
+        /* Style pour les images insérées via Markdown */
+        .md-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 2rem auto; /* Centre l'image avec de l'espace autour */
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Style des liens en orange (comme demandé précédemment) */
+        #markdown-content a, #modal-body a {
+            color: var(--owa-orange);
+            font-weight: 700;
+            text-decoration: none;
+        }
+        #markdown-content a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -205,23 +225,39 @@
         }
     }
 
-        // Parseur Markdown minimaliste
         function parseMarkdown(text) {
+            if (!text) return "";
+
             return text
                 .trim()
-                .replace(/^# (.*$)/gim, '<h2>$1</h2>')
-                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                // 1. Images (à traiter en priorité)
+                .replace(/!\[(.*?)\]\((.*?)\)/gim, '<img src="$2" alt="$1" class="md-image">')
+                
+                // 2. Liens 
+                .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank">$1</a>')
+                
+                // 3. Titres (du plus grand au plus petit)
                 .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                .replace(/^# (.*$)/gim, '<h2>$1</h2>') // On harmonise le # en h2 pour le style OWA
+                
+                // 4. Gras
                 .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
-                // Gestion des listes
+                
+                // 5. Listes à puces
                 .replace(/^\* (.*$)/gim, '<li>$1</li>')
+                // On enveloppe les <li> adjacents dans une <ul>
                 .replace(/(<li>.*<\/li>)/gim, '<ul>$1</ul>')
                 .replace(/<\/ul>\s*<ul>/gim, '') 
-                // Paragraphes
+
+                // 6. Paragraphes (On transforme les doubles sauts de ligne en balises)
                 .replace(/\n\n/gim, '</p><p>')
+                
+                // 7. Sécurité : On emballe les lignes de texte pur qui n'ont pas encore de balises
                 .replace(/^([^<].*)$/gim, '<p>$1</p>')
-                // Transformation des liens
-                .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank">$1</a>');
+                
+                // Nettoyage des paragraphes vides accidentels
+                .replace(/<p><\/p>/gim, '');
         }
 
         loadContent();
