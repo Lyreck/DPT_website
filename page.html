@@ -107,6 +107,45 @@
             background-color: var(--owa-orange);
             color: white !important;
         }
+
+        /* --- FOOTER STYLES --- */
+        .site-footer {
+            background-color: var(--owa-orange);
+            color: white;
+            padding: 4rem 10%;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+        }
+
+        .footer-column h3 {
+            text-transform: lowercase;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            display: inline-block;
+        }
+
+        .footer-column p, .footer-column a {
+            font-size: 0.9rem;
+            color: white;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .map-intro { padding: 3rem 5%; }
+        }
     </style>
 </head>
 <body>
@@ -169,26 +208,39 @@
         // Parseur Markdown minimaliste
         function parseMarkdown(text) {
             return text
-                // Nettoyage des espaces vides inutiles en début/fin
                 .trim()
-                // Titres H2 (##) - Deviennent orange
-                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-                // Titres H3 (###) - Deviennent orange
-                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-                // Si vous utilisez # à l'intérieur du texte, on le traite en H2
                 .replace(/^# (.*$)/gim, '<h2>$1</h2>')
-                // Gras
+                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
                 .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
-                // Paragraphes (double retour à la ligne)
+                // Gestion des listes
+                .replace(/^\* (.*$)/gim, '<li>$1</li>')
+                .replace(/(<li>.*<\/li>)/gim, '<ul>$1</ul>')
+                .replace(/<\/ul>\s*<ul>/gim, '') 
+                // Paragraphes
                 .replace(/\n\n/gim, '</p><p>')
-                // Listes à puces
-                .replace(/^\* (.*$)/gim, '<ul><li>$1</li></ul>')
-                .replace(/<\/ul>\s*<ul>/gim, '')
-                // On enveloppe le tout dans un paragraphe si ce n'est pas déjà fait
                 .replace(/^([^<].*)$/gim, '<p>$1</p>');
         }
 
         loadContent();
     </script>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>Team</h3>
+                <p>Dariia HARYFULLINA, Frida HELLEN, Léo LE DOUAREC, Kai MÜTSCHELE, Léo REINBOLD</p>
+            </div>
+            <div class="footer-column">
+                <h3>Links</h3>
+                <a href="https://github.com/Lyreck/DPT_website#" target="_blank">View the website's source code on GitHub</a>
+            </div>
+            <div class="footer-column">
+                <h3>Credits</h3>
+                <p>This website was built using Gemini 3 and is based on Open Web Advocacy's public website: <a href="https://open-web-advocacy.org" target="_blank">Open Web Advocacy (OWA)</a>.</p>
+            </div>
+        </div>
+    </footer>
+</footer>
 </body>
 </html>

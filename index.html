@@ -261,6 +261,71 @@
                 gap: 5px;
             }
         }
+
+        /* --- FOOTER STYLES --- */
+        .site-footer {
+            background-color: var(--owa-orange);
+            color: white;
+            padding: 4rem 10%;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+        }
+
+        .footer-column h3 {
+            text-transform: lowercase;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            display: inline-block;
+        }
+
+        .footer-column p, .footer-column a {
+            font-size: 0.9rem;
+            color: white;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- BULLET POINTS ORANGE (MARKDOWN) --- */
+        #markdown-content ul {
+            list-style: none; /* On enlève les points par défaut */
+            padding-left: 0;
+            margin-bottom: 2rem;
+        }
+
+        #markdown-content li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Création de la puce orange personnalisée */
+        #markdown-content li::before {
+            content: "•";
+            color: var(--owa-orange);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1rem;
+            margin-left: -1.5rem;
+            font-size: 1.5rem;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
     </style>
 </head>
 <body>
@@ -342,6 +407,23 @@
             </div>
         </div>
     </section>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>Team</h3>
+                <p>Dariia HARYFULLINA, Frida HELLEN, Léo LE DOUAREC, Kai MÜTSCHELE, Léo REINBOLD</p>
+            </div>
+            <div class="footer-column">
+                <h3>Links</h3>
+                <a href="https://github.com/Lyreck/DPT_website#" target="_blank">View the website's source code on GitHub</a>
+            </div>
+            <div class="footer-column">
+                <h3>Credits</h3>
+                <p>This website was built using Gemini 3 and is based on Open Web Advocacy's public website: <a href="https://open-web-advocacy.org" target="_blank">Open Web Advocacy (OWA)</a>.</p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>

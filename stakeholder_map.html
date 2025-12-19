@@ -64,20 +64,31 @@
             text-transform: lowercase;
         }
 
-        /* --- SECTION CONTEXTE --- */
+        /* --- SECTION CONTEXTE (MISE À JOUR) --- */
         .map-intro {
-            padding: 3rem 10%;
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
+            padding: 4rem 10%;
             background-color: white;
+            max-width: 1000px; /* Limite la largeur pour que les lignes ne soient pas trop longues */
         }
 
         .map-intro h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: var(--owa-orange);
             text-transform: lowercase;
+            margin-bottom: 2rem; /* Espace sous le titre */
+        }
+
+        .map-intro p {
+            margin-bottom: 1.5rem; /* Espace entre chaque paragraphe */
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--owa-text);
+        }
+
+        /* Style spécifique pour le paragraphe final en gras */
+        .map-intro p strong {
+            color: var(--owa-black);
         }
 
         /* --- STAKEHOLDER MAP SECTION --- */
@@ -230,6 +241,45 @@
             background-color: var(--owa-orange);
             color: white !important;
         }
+
+        /* --- FOOTER STYLES --- */
+        .site-footer {
+            background-color: var(--owa-orange);
+            color: white;
+            padding: 4rem 10%;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+        }
+
+        .footer-column h3 {
+            text-transform: lowercase;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            display: inline-block;
+        }
+
+        .footer-column p, .footer-column a {
+            font-size: 0.9rem;
+            color: white;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .map-intro { padding: 3rem 5%; }
+        }
     </style>
 </head>
 <body>
@@ -380,5 +430,22 @@
 
         document.getElementById('modal').onclick = (e) => { if (e.target.id === 'modal') closeModal(); };
     </script>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>Team</h3>
+                <p>Dariia HARYFULLINA, Frida HELLEN, Léo LE DOUAREC, Kai MÜTSCHELE, Léo REINBOLD</p>
+            </div>
+            <div class="footer-column">
+                <h3>Links</h3>
+                <a href="https://github.com/Lyreck/DPT_website#" target="_blank">View the website's source code on GitHub</a>
+            </div>
+            <div class="footer-column">
+                <h3>Credits</h3>
+                <p>This website was built using Gemini 3 and is based on Open Web Advocacy's public website: <a href="https://open-web-advocacy.org" target="_blank">Open Web Advocacy (OWA)</a>.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
