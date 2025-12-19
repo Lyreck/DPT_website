@@ -1,6 +1,6 @@
 # Our call for action
 
-No AI without us: **No automation without consultation**. Join the fights to halt risky deployment and force real safeguards.
+No AI without us: **No automation without consultation**. Join the fight to halt risky deployment and force real safeguards.
 
 # 1. Sign the petition: stop risky AI
 We refuse to let an opaque algorithm decide citizenship. Demand a moratorium until independent audits on bias, legality, and workload are public, plus a no job cuts guarantee for 10 years. Management announced rollout Oct 10 - consultation came too late. Add your voice now.
