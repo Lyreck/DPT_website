@@ -326,6 +326,15 @@
         @media (max-width: 768px) {
             .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
         }
+
+        .recent-news .news-item a:hover strong {
+            text-decoration: underline;
+        }
+
+        .recent-news .news-item a:hover {
+            background-color: var(--owa-bg-light);
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -397,6 +406,7 @@
         <div class="recent-news">
             <h2>recent updates</h2>
             <div class="news-item">
+                <a href="page.html?p=message-to-management&folder=articles" style="text-decoration: none; color: inherit;"></a>
                 <p><small>02 Dec 2025</small><br><strong>The HLC and the ethical board raises concern over rapid deployment of AI tool</strong></p>
             </div>
             <div class="news-item">

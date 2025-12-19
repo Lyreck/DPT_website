@@ -192,38 +192,44 @@
         </main>
 
     <script>
-        // 1. Récupérer le nom de la page dans l'URL (ex: ?p=action)
+        // 1. Récupérer le nom de la page et le dossier dans l'URL
         const params = new URLSearchParams(window.location.search);
-        const pageId = params.get('p') || 'action';
+        const pageId = params.get('p') || 'context';
+        const folder = params.get('folder') || ''; // Récupère le dossier s'il existe
 
-        // 2. Charger le fichier Markdown
+        // 2. Construire le chemin du fichier
+        // Si folder est "articles", le chemin sera "articles/nom_du_fichier.md"
+        const filePath = folder ? `${folder}/${pageId}.md` : `${pageId}.md`;
+
+
+        // 3. Charger le fichier Markdown
         async function loadContent() {
-        try {
-            const response = await fetch(`${pageId}.md`);
-            if (!response.ok) throw new Error("Page non trouvée");
-            let text = await response.text();
-            
-            // Extraction du titre (première ligne commençant par #)
-            const lines = text.split('\n');
-            let title = "ai trade union";
-            let contentStartIndex = 0;
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) throw new Error("Page non trouvée");
+                let text = await response.text();
+                
+                // Extraction du titre (première ligne commençant par #)
+                const lines = text.split('\n');
+                let title = "ai trade union";
+                let contentStartIndex = 0;
 
-            if (lines[0].startsWith('# ')) {
-                title = lines[0].replace('# ', '').toLowerCase();
-                contentStartIndex = 1; // On commence le rendu après le titre
+                if (lines[0].startsWith('# ')) {
+                    title = lines[0].replace('# ', '').toLowerCase();
+                    contentStartIndex = 1; // On commence le rendu après le titre
+                }
+
+                document.getElementById('page-title').textContent = title;
+                
+                // On rejoint le reste du texte et on parse
+                const bodyContent = lines.slice(contentStartIndex).join('\n');
+                document.getElementById('markdown-content').innerHTML = parseMarkdown(bodyContent);
+                
+            } catch (err) {
+                document.getElementById('page-title').textContent = "erreur";
+                document.getElementById('markdown-content').innerHTML = "<p>Désolé, cette page n'existe pas.</p>";
             }
-
-            document.getElementById('page-title').textContent = title;
-            
-            // On rejoint le reste du texte et on parse
-            const bodyContent = lines.slice(contentStartIndex).join('\n');
-            document.getElementById('markdown-content').innerHTML = parseMarkdown(bodyContent);
-            
-        } catch (err) {
-            document.getElementById('page-title').textContent = "erreur";
-            document.getElementById('markdown-content').innerHTML = "<p>Désolé, cette page n'existe pas.</p>";
         }
-    }
 
         function parseMarkdown(text) {
             if (!text) return "";
