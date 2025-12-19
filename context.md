@@ -30,6 +30,6 @@ Approximately 12,000 civil servant caseworkers are directly affected by this new
 - **Workload**. We refuse any hidden increase in workload (ex: more files per agent, more complex cases left to humans, or any pressure to follow AI recommendations).​
 - **Management claims**. We have doubts about claimed efficiency gains, alleged bias reduction, and the feasibility of moving from (a right now) largely analog/semi-digital practices to an AI-driven process.​
 - **Time needed to verify system’s outputs**. Since it is an AI system; that is quite complex, with Natural Language processing prone to hallucinations, its outputs will need to be reviewed by caseworkers. Therefore more time is needed for the processing, and that should be taken into account.  
-- **Affecting citizens**.we are concerned that this algorithm, even if claimed to be unbiased, would still carry biases and treat people unfairly. This would result in higher demands to review their application manually and therefore more time (higher number of appeals)
-- **Training**.we are worried that AI will be imposed without proper training, imposing caseworkers to learn on-the-go, without any clear instructions and time to learn about the algorithm. 
+- **Affecting citizens**. We are concerned that this algorithm, even if claimed to be unbiased, would still carry biases and treat people unfairly. This would result in higher demands to review their application manually and therefore more time (higher number of appeals)
+- **Training**. We are worried that AI will be imposed without proper training, imposing caseworkers to learn on-the-go, without any clear instructions and time to learn about the algorithm. 
 
