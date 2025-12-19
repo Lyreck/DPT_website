@@ -13,11 +13,11 @@ It is said that citizens are allowed to appeal decisions by the DCI guaranteed b
 # TECHNICAL DESCRIPTION OF THE AI SYSTEM
 The DCI is rolling out an AI-based scoring system for online citizenship applications. The system is presented as a “pre-screening” tool for selecting eligible persons to sit a citizenship test (culture, history and language questions), not a fully automated decision-maker.
 
-- **Purpose:** increase processing speed and administrative efficiency by triaging applications before human review.
-- **Scope:** for now limited to online applications, paper-based files are not yet affected
-- **Functionality:** assigns each applicant a risk score based on structured data and analysis of the motivation letter using Natural Language Processing. The system then produces recommendations whether the case should receive standard processing, enhanced scrutiny, or a possible rejection. The final decision remains formally with a human caseworker.
-- **Inputs:** administrative data (legal status, criminal record, length of residence, employment and income history, language level, country of origin, occupation, age, education, gender, address etc.), motivation letter (natural language processing analysis to determine if the person presents good motivations to be granted the citizenship - integration into the country, understanding of what citizenship means etc.)
-- **Development:** designed and developed by an external AI contractor and integrated and maintained in collaboration with the internal IT department, which is responsible for data flows and system stability.
+* **Purpose:** increase processing speed and administrative efficiency by triaging applications before human review.
+* **Scope:** for now limited to online applications, paper-based files are not yet affected
+* **Functionality:** assigns each applicant a risk score based on structured data and analysis of the motivation letter using Natural Language Processing. The system then produces recommendations whether the case should receive standard processing, enhanced scrutiny, or a possible rejection. The final decision remains formally with a human caseworker.
+* **Inputs:** administrative data (legal status, criminal record, length of residence, employment and income history, language level, country of origin, occupation, age, education, gender, address etc.), motivation letter (natural language processing analysis to determine if the person presents good motivations to be granted the citizenship - integration into the country, understanding of what citizenship means etc.)
+* **Development:** designed and developed by an external AI contractor and integrated and maintained in collaboration with the internal IT department, which is responsible for data flows and system stability.
 
 
 # SOCIAL AND WORKFORCE IMPACT
@@ -25,11 +25,11 @@ Approximately 12,000 civil servant caseworkers are directly affected by this new
 
 # Our concerns 
 
-- **Substitution of human expertise**. Our fear is that AI will gradually replace professional judgment, legal reasoning, and the caseworker’s role as a guarantor of fairness and legality. 
-- **Job security**. We are strictly opposed to any announced or hidden job cuts, especially if multiple AI tools are introduced over time.​
-- **Workload**. We refuse any hidden increase in workload (ex: more files per agent, more complex cases left to humans, or any pressure to follow AI recommendations).​
-- **Management claims**. We have doubts about claimed efficiency gains, alleged bias reduction, and the feasibility of moving from (a right now) largely analog/semi-digital practices to an AI-driven process.​
-- **Time needed to verify system’s outputs**. Since it is an AI system; that is quite complex, with Natural Language processing prone to hallucinations, its outputs will need to be reviewed by caseworkers. Therefore more time is needed for the processing, and that should be taken into account.  
-- **Affecting citizens**. We are concerned that this algorithm, even if claimed to be unbiased, would still carry biases and treat people unfairly. This would result in higher demands to review their application manually and therefore more time (higher number of appeals)
-- **Training**. We are worried that AI will be imposed without proper training, imposing caseworkers to learn on-the-go, without any clear instructions and time to learn about the algorithm. 
+* **Substitution of human expertise**. Our fear is that AI will gradually replace professional judgment, legal reasoning, and the caseworker’s role as a guarantor of fairness and legality. 
+* **Job security**. We are strictly opposed to any announced or hidden job cuts, especially if multiple AI tools are introduced over time.​
+* **Workload**. We refuse any hidden increase in workload (ex: more files per agent, more complex cases left to humans, or any pressure to follow AI recommendations).​
+* **Management claims**. We have doubts about claimed efficiency gains, alleged bias reduction, and the feasibility of moving from (a right now) largely analog/semi-digital practices to an AI-driven process.​
+* **Time needed to verify system’s outputs**. Since it is an AI system; that is quite complex, with Natural Language processing prone to hallucinations, its outputs will need to be reviewed by caseworkers. Therefore more time is needed for the processing, and that should be taken into account.  
+* **Affecting citizens**. We are concerned that this algorithm, even if claimed to be unbiased, would still carry biases and treat people unfairly. This would result in higher demands to review their application manually and therefore more time (higher number of appeals)
+* **Training**. We are worried that AI will be imposed without proper training, imposing caseworkers to learn on-the-go, without any clear instructions and time to learn about the algorithm. 
 
