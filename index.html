@@ -335,6 +335,95 @@
             background-color: var(--owa-bg-light);
             display: block;
         }
+
+        /* --- CASE STUDY & CLAIMS --- */
+        .case-study {
+            padding: 6rem 10% 4rem 10%;
+            background-color: #fff;
+        }
+
+        .case-intro {
+            max-width: 800px;
+            margin-bottom: 4rem;
+        }
+
+        .case-intro h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--owa-orange);
+            text-transform: lowercase;
+            margin-bottom: 2rem;
+        }
+
+        .claims-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border: 2px solid var(--owa-orange); /* Cadre global style OWA */
+        }
+
+        .claim-card {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .claim-card h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-transform: lowercase;
+        }
+
+        /* Couleurs alternées */
+        .claim-card.orange {
+            background-color: var(--owa-orange);
+            color: white;
+        }
+
+        .claim-card.white {
+            background-color: white;
+            color: var(--owa-text);
+        }
+
+        /* --- FUTURE ACTIONS --- */
+        .future-actions {
+            padding: 4rem 10% 6rem 10%;
+        }
+
+        .future-actions h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            text-transform: lowercase;
+        }
+
+        .actions-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .action-step {
+            border-left: 4px solid var(--owa-orange);
+            padding-left: 1.5rem;
+        }
+
+        .action-tag {
+            display: inline-block;
+            background: var(--owa-orange);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .claims-grid, .actions-container {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -406,8 +495,9 @@
         <div class="recent-news">
             <h2>recent updates</h2>
             <div class="news-item">
-                <a href="page.html?p=message-to-management&folder=articles" style="text-decoration: none; color: inherit;"></a>
-                <p><small>02 Dec 2025</small><br><strong>The HLC and the ethical board raises concern over rapid deployment of AI tool</strong></p>
+                <a href="page.html?p=message-to-management&folder=articles" style="text-decoration: none; color: inherit;">
+                    <p><small>02 Dec 2025</small><br><strong>The HLC and the ethical board raises concern over rapid deployment of AI tool</strong></p>
+                </a>
             </div>
             <div class="news-item">
                 <p><small>13 Oct 2025</small><br><strong>Minister announces consultation of civil servants in midst of new AI announcement</strong></p>
@@ -417,6 +507,52 @@
             </div>
         </div>
     </section>
+
+
+    <section class="case-study">
+        <div class="case-intro">
+            <h2>The automated citizenship tool: a risky rollout</h2>
+            <p>The Ministry of Interior is currently deploying an AI-driven system to automate the processing of citizenship applications. While presented as a "modernization" tool, our analysis reveals deep structural risks for both agents and the rule of law. Our coalition has identified four critical areas of concern:</p>
+        </div>
+
+        <div class="claims-grid">
+            <div class="claim-card orange">
+                <h3>Substitution of workers</h3>
+                <p>We refuse the replacement of human legal expertise by opaque probabilistic models. Accountability must remain human.</p>
+            </div>
+            <div class="claim-card white">
+                <h3>Workload and time pressure</h3>
+                <p>AI should not be a pretext to increase quotas. We demand that the time saved be reinvested in complex file analysis.</p>
+            </div>
+            <div class="claim-card white">
+                <h3>Training and preparedness</h3>
+                <p>Agents cannot be "responsible" for a tool they don't understand. We demand real technical and legal training.</p>
+            </div>
+            <div class="claim-card orange">
+                <h3>Transparency</h3>
+                <p>The algorithm's code and its training data must be open to audit by civil servants and independent bodies.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="future-actions">
+        <h2>our future actions</h2>
+        <div class="actions-container">
+            <div class="action-step">
+                <span class="action-tag">1. Delay</span>
+                <p>We will use all legal means to delay the rollout until a full social and ethical impact study is conducted.</p>
+            </div>
+            <div class="action-step">
+                <span class="action-tag">2. Ask for alternatives</span>
+                <p>We demand more staff, digital tools adapted to field reality, and continuous training instead of "black-box" automation.</p>
+            </div>
+            <div class="action-step">
+                <span class="action-tag">3. Conduct a survey</span>
+                <p>We are launching a nationwide survey of civil servants to document the reality of AI usage on the ground.</p>
+            </div>
+        </div>
+    </section>
+
 
     <footer class="site-footer">
         <div class="footer-grid">
