@@ -342,17 +342,47 @@
             background-color: #fff;
         }
 
+        /* Section Case Study - Agencement Face à face */
         .case-intro {
-            max-width: 800px;
-            margin-bottom: 4rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Texte large à gauche (2), Titre à droite (1) */
+            gap: 4rem;
+            align-items: start;
+            margin-bottom: 5rem;
         }
 
+        /* Le titre reste orange et se place à droite */
         .case-intro h2 {
-            font-size: 3rem;
+            grid-column: 2; /* Force le titre dans la 2ème colonne */
+            grid-row: 1;
+            color: var(--owa-orange); /* Conservation de la couleur orange */
+            font-size: 1.8rem;
             font-weight: 800;
-            color: var(--owa-orange);
             text-transform: lowercase;
-            margin-bottom: 2rem;
+            margin-bottom: 0;
+        }
+
+        /* La description se place à gauche */
+        .case-description {
+            grid-column: 1; /* Force le texte dans la 1ère colonne */
+            grid-row: 1;
+        }
+
+        /* Adaptation Mobile */
+        @media (max-width: 900px) {
+            .case-intro {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .case-intro h2, .case-description {
+                grid-column: 1;
+            }
+            .case-intro h2 {
+                grid-row: 1; /* Le titre repasse au-dessus sur mobile */
+            }
+            .case-description {
+                grid-row: 2;
+            }
         }
 
         .claims-grid {
@@ -419,10 +449,34 @@
             margin-bottom: 1rem;
         }
 
+        /* Espace après l'introduction de la roadmap */
+        .future-actions h2 + p {
+            margin-bottom: 3rem; /* Crée l'espace après la phrase "We will work to ensure..." */
+        }
+
+        /* Espace après les paragraphes introductifs à l'intérieur de chaque colonne */
+        .action-step p {
+            margin-bottom: 1.5rem; /* Crée l'espace après "We will work to reach a compromise..." */
+        }
+
+        /* Optionnel : Améliorer l'espacement des puces pour qu'elles ne soient pas trop serrées */
+        .action-step ul li {
+            margin-bottom: 0.5rem;
+        }
+
         @media (max-width: 768px) {
             .claims-grid, .actions-container {
                 grid-template-columns: 1fr;
             }
+        }
+
+        /* Ligne de séparation orange */
+        .separator-line {
+            border: none;
+            border-top: 3px solid var(--owa-orange);
+            width: 80%; /* Largeur de la ligne (ajustez à 100% si vous préférez) */
+            margin: 4rem auto; /* Espacement vertical entre les sections */
+            opacity: 1;
         }
     </style>
 </head>
@@ -508,47 +562,92 @@
         </div>
     </section>
 
+    <hr class="separator-line">
 
     <section class="case-study">
         <div class="case-intro">
-            <h2>The automated citizenship tool: a risky rollout</h2>
-            <p>The Ministry of Interior is currently deploying an AI-driven system to automate the processing of citizenship applications. While presented as a "modernization" tool, our analysis reveals deep structural risks for both agents and the rule of law. Our coalition has identified four critical areas of concern:</p>
+            <h2>[new case] the citizenship-ai tool: a risky rollout</h2>
+            
+            <div class="case-description">
+                <p>The Ministry of Interior is currently deploying an AI-driven system to automate the processing of citizenship applications. While presented as a "modern", "efficient", and "focalized" tool, our analysis reveals deep structural risks for both agents and the rule of law. Our coalition has identified four critical areas of concern:</p>
+            </div>
         </div>
 
         <div class="claims-grid">
             <div class="claim-card orange">
                 <h3>Substitution of workers</h3>
-                <p>We refuse the replacement of human legal expertise by opaque probabilistic models. Accountability must remain human.</p>
+                <p><b>HCL fears that this “pre-screening” tool could erode legal reasoning, professional judgment, and the caseworker’s role as a guarantor of fairness.</b></p>
+                <p>We argue that:
+                    <ul>
+                        <li>AI must be limited to administrative tasks (e.g., checking for missing documents) and explicitly barred from assessing the substance of applications (e.g., motivation letters, integration criteria).</li>
+                        <li>Caseworkers must retain full authority to override AI recommendations, with no pressure or incentives to comply.</li>
+                        <li>Human in the Loop Coalition rejects any system that reduces caseworkers to “AI validators” or creates a two-tier system where humans only handle “complex” cases.</li>
+                    </ul>
+                </p>
             </div>
             <div class="claim-card white">
                 <h3>Workload and time pressure</h3>
-                <p>AI should not be a pretext to increase quotas. We demand that the time saved be reinvested in complex file analysis.</p>
+                <p><b>HCL fears that the AI system will increase workload, not reduce it.</b></p>
+                <p>We claim that:
+                    <ul>
+                        <li>Caseworkers will spend more time verifying AI outputs (e.g., checking risk scores, correcting errors, justifying deviations from recommendations): <b> No increase in individual performance may be justified by AI implementation.</b></li>
+                        <li>“Standard” cases may be processed faster, but appeals and complex cases will pile up, as citizens challenge flawed or biased AI decisions: <b>we need additional staffing, not AI</b></li>
+                        <li>Management will likely increase case quotas under the pretext of “efficiency gains,” leading to stress and burnout: <b>we need a detailed workload impact assessment.</b></li>
+                    </ul>
+                </p>
             </div>
             <div class="claim-card white">
                 <h3>Training and preparedness</h3>
-                <p>Agents cannot be "responsible" for a tool they don't understand. We demand real technical and legal training.</p>
+                <p><b>HCL fears that AI will be imposed without proper training, leaving caseworkers unprepared to challenge or understand its outputs.</b></p>
+                <p>We propose that:
+                    <ul>
+                        <li>Caseworkers receive mandatory and thoughtful training on the system before it is being launched, to let them adapt to the system and use it correctly.</li>
+                        <li>Deployment should come after training. It should be step-by-step, starting with test agencies to get feedback on the system.</li>
+                        <li>HCL and other trade unions stay involved to build the training curriculum hand-in-hand with management.</li>
+                    </ul>
+                </p>
             </div>
             <div class="claim-card orange">
                 <h3>Transparency</h3>
-                <p>The algorithm's code and its training data must be open to audit by civil servants and independent bodies.</p>
+                <p><b>For our case workers and for citizens, transparency of the system is a non-negociable.</b></p>
+                <p>We propose that:
+                    <ul>
+                        <li>Clear guidelines on the use of AI in the procedure are available to both case workers and citizens.</li>
+                        <li>The IT department runs independent audits of the AI’s accuracy, bias, and real-world impact, with results made public.</li>
+                    </ul>
+                </p>
             </div>
         </div>
     </section>
 
     <section class="future-actions">
         <h2>our future actions</h2>
+        <p>We will work to ensure workers' rights are safe. Here is our roadmap to follow closely the deployment of this system in the coming months.</p>
         <div class="actions-container">
             <div class="action-step">
-                <span class="action-tag">1. Delay</span>
-                <p>We will use all legal means to delay the rollout until a full social and ethical impact study is conducted.</p>
+                <span class="action-tag">1. Delay & Disrupt</span>
+                <p>We will work to reach a compromise that benefits workers.</p>
+                    <ul>
+                        <li>Demand exhaustive impact assessments.</li>
+                        <li>Insist on co-construction between IT and trade unions.</li>
+                        <li>Partner with civil society and the media.</li>
+                    </ul>
+                
             </div>
             <div class="action-step">
-                <span class="action-tag">2. Ask for alternatives</span>
-                <p>We demand more staff, digital tools adapted to field reality, and continuous training instead of "black-box" automation.</p>
+                <span class="action-tag">2. Alternatives</span>
+                <p>We propose alternatives to AI deployment.</p>
+                    <ul>
+                        <li>More staff to reduce caseloads and improve service quality.</li>
+                        <li>Ask for better digital tools adapted to field reality.</li>
+                        <li>Conduct a survey of civil servants and civil society.</li>
+                    </ul>
+
+                
             </div>
             <div class="action-step">
                 <span class="action-tag">3. Conduct a survey</span>
-                <p>We are launching a nationwide survey of civil servants to document the reality of AI usage on the ground.</p>
+                <p>A nationwide survey of civil servants will allow us to document civil servant's concerns and come to the Minister with factual and empirically grounded requests.</p>
             </div>
         </div>
     </section>
